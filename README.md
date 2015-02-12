@@ -1,4 +1,4 @@
-# fnal-pet-rpmrepos
+# fnal-puppet-rpmrepos
 
 This repository provides a number of manifests to load to enable various
 RPM repositories in use by DCSO and/or CMS.
