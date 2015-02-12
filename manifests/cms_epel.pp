@@ -26,7 +26,7 @@
 #     -or-
 #   include rpmrepos::cms_epel
 #
-class rpmrepos::epel (
+class rpmrepos::cms_epel (
   $baseurl  = 'http://cms-install.fnal.gov/cobbler/repo_mirror',
   $enabled  = true,
   $itb      = false,
