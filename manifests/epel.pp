@@ -2,11 +2,7 @@
 #
 #   Wrapper around cms_epel, at least for now.
 #
-# == Parameters
-#
-# == Requirements
-#
-# == Usage Usage:
+# == Usage
 #
 #   include rpmrepos::epel
 #

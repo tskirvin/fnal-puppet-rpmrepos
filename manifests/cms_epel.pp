@@ -1,16 +1,17 @@
 # rpmrepos::cms_epel
 #
-#   Enable the EPEL repositories from the CMS servers (using yumrepo) and 
-#   imports relevant GPG keys.
+#   Enable the EPEL repositories mirrored by the CMS install servers (using 
+#   yumrepo) and import relevant GPG keys.
 #
 # == Parameters
 #
 #   baseurl   http://cms-install.fnal.gov/cobbler/repo_mirror
-#   enabled   Gets passed to yumrepo.  Default: 'absent'
+#   enabled   Gets passed to yumrepo.  Default: true
 #   itb       If 'true', points at the CMS ITB EPEL mirror rather than the
 #             default (the non-ITB mirror updates more often).  Default: false
+#   priority  What yum priority should this repo get?  Lower is "better".  
+#             Default: 90
 #   proxy     Gets passed to yumrepo.  Default: 'absent'
-#   priority  What yum priority should this repo get?  Default: 90
 #
 # == Requirements
 #
@@ -26,11 +27,11 @@
 #   include rpmrepos::cms_epel
 #
 class rpmrepos::epel (
-  $baseurl           = 'http://cms-install.fnal.gov/cobbler/repo_mirror',
-  $enabled           = true,
-  $itb               = false,
-  $proxy             = 'absent',
-  $priority          = '90'
+  $baseurl  = 'http://cms-install.fnal.gov/cobbler/repo_mirror',
+  $enabled  = true,
+  $itb      = false,
+  $priority = '90',
+  $proxy    = 'absent'
 ) {
   validate_bool   ($enabled, $itb)
   validate_string ($baseurl, $proxy, $priority)
@@ -61,6 +62,6 @@ class rpmrepos::epel (
 
     rpmrepos::rpm_gpg_key { "EPEL-${::os_maj_version}": path => $gpgkey }
   } else {
-    notice ("Your operating system ${::operatingsystem} will not have the EPEL repository applied")
+    notice ("${::operatingsystem}: not compatible with EPEL repo")
   }
 }

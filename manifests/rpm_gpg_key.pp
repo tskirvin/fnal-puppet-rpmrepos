@@ -1,4 +1,4 @@
-# rpmrepos::rpm_gpg_key
+# Define: rpmrepos::rpm_gpg_key
 #
 #   Import GPG keys into the list of trusted RPM signing keys.
 #
@@ -19,6 +19,7 @@ define rpmrepos::rpm_gpg_key (
   $path = undef
 ) {
   validate_string ($name, $path)
+
   exec {  "import-${name}":
     path      => '/bin:/usr/bin:/sbin:/usr/sbin',
     command   => "rpm --import $path",
