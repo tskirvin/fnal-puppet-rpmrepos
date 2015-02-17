@@ -41,7 +41,7 @@ class rpmrepos::cms_puppet (
   if $::osfamily == 'RedHat' {
     yumrepo { 'puppet':
       baseurl  => "${baseurl}/puppet-el${::lsbmajdistrelease}-${::architecture}${extra}",
-      descr    => "Puppet RPMs for EL ${::os_maj_version} - ${::architecture}",
+      descr    => "Puppet RPMs for EL ${::lsbmajdistrelease} - ${::architecture}",
       enabled  => $enabled,
       gpgcheck => true,
       gpgkey   => "file://${gpgkey}",
@@ -51,7 +51,7 @@ class rpmrepos::cms_puppet (
 
     yumrepo { 'puppet-deps':
       baseurl  => "${baseurl}/puppet-deps-el${::lsbmajdistrelease}-${::architecture}${extra}",
-      descr    => "Puppet Dependency RPMs for EL ${::os_maj_version} - ${::architecture}",
+      descr    => "Puppet Dependency RPMs for EL ${::lsbmajdistrelease} - ${::architecture}",
       enabled  => $enabled,
       gpgcheck => true,
       gpgkey   => "file://${gpgkey}",

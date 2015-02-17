@@ -38,12 +38,12 @@ class rpmrepos::cms_epel (
 
   if $itb { $url = "${baseurl}/uscmst1-epel${::lsbmajdistrelease}-itb" }
   else    { $url = "${baseurl}/epel${::lsbmajdistrelease}/" }
-  $gpgkey = "/etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-${::os_maj_version}"
+  $gpgkey = "/etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-${::lsbmajdistrelease}"
 
   if $::osfamily == 'RedHat' and $::operatingsystem != 'Fedora' {
 
     yumrepo { 'epel':
-      descr          => "Extra Packages for Enterprise Linux ${::os_maj_version} - ${::architecture}",
+      descr          => "Extra Packages for Enterprise Linux ${::lsbmajdistrelease} - ${::architecture}",
       baseurl        => $url,
       enabled        => $enabled,
       failovermethod => 'priority',
@@ -57,10 +57,10 @@ class rpmrepos::cms_epel (
       owner  => 'root',
       group  => 'root',
       mode   => '0644',
-      source => "puppet:///modules/rpmrepos/RPM-GPG-KEY-EPEL-${::os_maj_version}",
+      source => "puppet:///modules/rpmrepos/RPM-GPG-KEY-EPEL-${::lsbmajdistrelease}",
     }
 
-    rpmrepos::rpm_gpg_key { "EPEL-${::os_maj_version}":
+    rpmrepos::rpm_gpg_key { "EPEL-${::lsbmajdistrelease}":
       path => "file://${gpgkey}"
     }
   } else {

@@ -53,7 +53,7 @@ class rpmrepos::cms_osg (
       priority => $rpmrepos::osg::priority,
       gpgcheck => '0',
       gpgkey   => "file://${gpgkey}",
-      descr    => "OSG RPMs for SL ${::os_maj_version} - ${::architecture}",
+      descr    => "OSG RPMs for SL ${::lsbmajdistrelease} - ${::architecture}",
       require  => Class['rpmrepos::epel']
     }
 

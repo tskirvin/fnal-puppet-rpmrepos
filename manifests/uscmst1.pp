@@ -38,7 +38,7 @@ class rpmrepos::uscmst1 (
   if $::osfamily == 'RedHat' {
     yumrepo { 'uscmst1':
       baseurl  => $url,
-      descr    => "USCMS-T1 RPMs for SL ${::os_maj_version} - ${::architecture}",
+      descr    => "USCMS-T1 RPMs for SL ${::lsbmajdistrelease} - ${::architecture}",
       enabled  => $enabled,
       gpgcheck => false,
       proxy    => $proxy,
