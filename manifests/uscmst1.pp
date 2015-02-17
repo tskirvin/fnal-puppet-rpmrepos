@@ -8,7 +8,7 @@
 # == Parameters
 #
 #   baseurl   http://cms-install.fnal.gov/cobbler/repo_mirror
-#   enabled   Gets passed to yumrepo.  Default: true
+#   enabled   Gets passed to yumrepo.  Default: 1
 #   priority  What yum priority should this repo get?  Lower is "better".
 #             Default: 60
 #   proxy     Gets passed to yumrepo.  Default: 'absent'
@@ -26,7 +26,7 @@
 #
 class rpmrepos::uscmst1 (
   $baseurl  = 'http://cms-install.fnal.gov/cobbler/repo_mirror',
-  $enabled  = true,
+  $enabled  = '1',
   $priority = '90',
   $proxy    = 'absent'
 ) {
@@ -40,7 +40,7 @@ class rpmrepos::uscmst1 (
       baseurl  => $url,
       descr    => "USCMS-T1 RPMs for SL ${::lsbmajdistrelease} - ${::architecture}",
       enabled  => $enabled,
-      gpgcheck => false,
+      gpgcheck => '0',
       proxy    => $proxy,
     }
 

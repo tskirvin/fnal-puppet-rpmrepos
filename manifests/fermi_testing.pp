@@ -5,13 +5,13 @@
 #
 # == Parameters
 #
-#   enabled   Should we enable this repo?  Default: false
+#   enabled   Should we enable this repo?  Default: 0
 #   priority  What yum priority should this repo get?  Lower is "better".
 #             Default: '5'
 #   proxy     Default: 'absent'
 #
 class rpmrepos::fermi_testing (
-  $enabled  = false,
+  $enabled  = '0',
   $priority = '5',
   $proxy    = 'absent'
 ) {

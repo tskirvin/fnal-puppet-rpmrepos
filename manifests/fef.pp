@@ -5,7 +5,7 @@
 # == Parameters
 #
 #   baseurl   http://rexadmin1.fnal.gov/yum-managed/
-#   enabled   Gets passed to yumrepo.  Default: true
+#   enabled   Gets passed to yumrepo.  Default: 1
 #   priority  What yum priority should this repo get?  Lower is "better".
 #             Default: 60
 #   proxy     Gets passed to yumrepo.  Default: 'absent'
@@ -23,7 +23,7 @@
 #
 class rpmrepos::fef (
   $baseurl  = 'http://rexadmin1.fnal.gov/yum-managed',
-  $enabled  = true,
+  $enabled  = 1,
   $priority = '60',
   $proxy    = 'absent'
 ) {
@@ -38,14 +38,16 @@ class rpmrepos::fef (
       baseurl  => $url_arch,
       descr    => 'fef managed rpms',
       enabled  => $enabled,
-      gpgcheck => false,
+      gpgcheck => '0',
+      priority => $priority,
       proxy    => $proxy,
     }
     yumrepo { 'fef-managed-noarch':
       baseurl  => $url_noarch,
       descr    => 'fef managed noarch rpms',
       enabled  => $enabled,
-      gpgcheck => false,
+      gpgcheck => '0',
+      priority => $priority,
       proxy    => $proxy,
     }
   } else {

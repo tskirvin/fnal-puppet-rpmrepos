@@ -6,7 +6,7 @@
 # == Parameters
 #
 #   baseurl   http://cms-install.fnal.gov/cobbler/repo_mirror
-#   enabled   Gets passed to yumrepo.  Default: true
+#   enabled   Gets passed to yumrepo.  Default: 1
 #   itb       If 'true', points at the CMS ITB OSG mirror rather than the
 #             default (the non-ITB mirror updates more often).  Default: false
 #   priority  What yum priority should this repo get?  Lower is "better".
@@ -26,7 +26,7 @@
 #
 class rpmrepos::cms_puppet (
   $baseurl  = 'http://cms-install.fnal.gov/cobbler/repo_mirror',
-  $enabled  = true,
+  $enabled  = '1',
   $itb      = false,
   $priority = '50',
   $proxy    = 'absent'
@@ -43,7 +43,7 @@ class rpmrepos::cms_puppet (
       baseurl  => "${baseurl}/puppet-el${::lsbmajdistrelease}-${::architecture}${extra}",
       descr    => "Puppet RPMs for EL ${::lsbmajdistrelease} - ${::architecture}",
       enabled  => $enabled,
-      gpgcheck => true,
+      gpgcheck => '1',
       gpgkey   => "file://${gpgkey}",
       priority => $priority,
       proxy    => $proxy
@@ -53,7 +53,7 @@ class rpmrepos::cms_puppet (
       baseurl  => "${baseurl}/puppet-deps-el${::lsbmajdistrelease}-${::architecture}${extra}",
       descr    => "Puppet Dependency RPMs for EL ${::lsbmajdistrelease} - ${::architecture}",
       enabled  => $enabled,
-      gpgcheck => true,
+      gpgcheck => '1',
       gpgkey   => "file://${gpgkey}",
       priority => $priority,
       proxy    => $proxy,

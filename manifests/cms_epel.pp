@@ -6,7 +6,7 @@
 # == Parameters
 #
 #   baseurl   http://cms-install.fnal.gov/cobbler/repo_mirror
-#   enabled   Gets passed to yumrepo.  Default: true
+#   enabled   Gets passed to yumrepo.  Default: 1
 #   itb       If 'true', points at the CMS ITB EPEL mirror rather than the
 #             default (the non-ITB mirror updates more often).  Default: false
 #   priority  What yum priority should this repo get?  Lower is "better".
@@ -28,7 +28,7 @@
 #
 class rpmrepos::cms_epel (
   $baseurl  = 'http://cms-install.fnal.gov/cobbler/repo_mirror',
-  $enabled  = true,
+  $enabled  = 1,
   $itb      = false,
   $priority = '90',
   $proxy    = 'absent'
