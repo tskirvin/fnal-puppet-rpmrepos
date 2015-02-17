@@ -19,9 +19,9 @@
 #
 # == Usage Usage:
 #
-#   class { 'rpmrepos::uscmst1': }
+#   class { 'rpmrepos::fef': }
 #
-class rpmrepos::uscmst1 (
+class rpmrepos::fef (
   $baseurl  = 'http://rexadmin1.fnal.gov/yum-managed/',
   $enabled  = true,
   $priority = '60',
