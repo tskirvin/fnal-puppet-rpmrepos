@@ -31,8 +31,8 @@ class rpmrepos::cms_puppet (
   $priority = '50',
   $proxy    = 'absent'
 ) {
-  validate_bool   ($enabled, $itb)
-  validate_string ($baseurl, $proxy, $priority)
+  validate_bool   ($itb)
+  validate_string ($baseurl, $enabled, $proxy, $priority)
 
   if $itb { $extra = 'itb' }
   else    { $extra = '' }

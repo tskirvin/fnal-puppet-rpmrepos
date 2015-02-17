@@ -34,8 +34,8 @@ class rpmrepos::slf (
   $priority = '10',
   $proxy    = 'absent'
 ) {
-  validate_bool   ($enabled, $floating)
-  validate_string ($proxy, $priority)
+  validate_bool   ($floating)
+  validate_string ($enabled, $proxy, $priority)
 
   if $floating { $slf = "slf${::lsbmajdistrelease}x" }
   else         { $slf = "slf${::lsbdistrelease}"     }

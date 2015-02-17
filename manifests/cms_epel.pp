@@ -28,13 +28,13 @@
 #
 class rpmrepos::cms_epel (
   $baseurl  = 'http://cms-install.fnal.gov/cobbler/repo_mirror',
-  $enabled  = 1,
+  $enabled  = '1',
   $itb      = false,
   $priority = '90',
   $proxy    = 'absent'
 ) {
-  validate_bool   ($enabled, $itb)
-  validate_string ($baseurl, $proxy, $priority)
+  validate_bool   ($itb)
+  validate_string ($enabled, $baseurl, $proxy, $priority)
 
   if $itb { $url = "${baseurl}/uscmst1-epel${::lsbmajdistrelease}-itb" }
   else    { $url = "${baseurl}/epel${::lsbmajdistrelease}/" }

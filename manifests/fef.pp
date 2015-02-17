@@ -27,8 +27,7 @@ class rpmrepos::fef (
   $priority = '60',
   $proxy    = 'absent'
 ) {
-  validate_bool   ($enabled)
-  validate_string ($baseurl, $proxy, $priority)
+  validate_string ($enabled, $baseurl, $proxy, $priority)
 
   $url_noarch = "${baseurl}/RPMS/noarch/\$releasever/"
   $url_arch   = "${baseurl}/RPMS/\$basearch/\$releasever/"

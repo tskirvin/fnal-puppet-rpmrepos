@@ -30,8 +30,7 @@ class rpmrepos::uscmst1 (
   $priority = '90',
   $proxy    = 'absent'
 ) {
-  validate_bool   ($enabled)
-  validate_string ($baseurl, $proxy, $priority)
+  validate_string ($baseurl, $enabled, $proxy, $priority)
 
   $url = "${baseurl}/uscmst1-el${::lsbmajdistrelease}-${::architecture}"
   $gpgkey = '/etc/pki/rpm-gpg/RPM-GPG-KEY-uscmst1'

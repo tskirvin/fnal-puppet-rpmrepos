@@ -33,8 +33,8 @@ class rpmrepos::cms_osg (
   $priority  = '80',
   $proxy     = 'absent',
 ) {
-  validate_bool   ($enabled, $itb)
-  validate_string ($baseurl, $proxy, $priority)
+  validate_bool   ($itb)
+  validate_string ($baseurl, $enabled, $proxy, $priority)
 
   ensure_packages ( ['yum-plugin-priorities'] )
 

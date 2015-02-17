@@ -15,8 +15,7 @@ class rpmrepos::fermi_testing (
   $priority = '5',
   $proxy    = 'absent'
 ) {
-  validate_bool ($enabled)
-  validate_string ($priority, $proxy)
+  validate_string ($enabled, $priority, $proxy)
 
   $slf = "slf${::lsbmajdistrelease}"
 
