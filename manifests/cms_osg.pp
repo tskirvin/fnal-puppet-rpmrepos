@@ -52,6 +52,7 @@ class rpmrepos::cms_osg (
       enabled  => $rpmrepos::osg::enabled,
       priority => $rpmrepos::osg::priority,
       gpgcheck => '0',
+      gpgkey   => "file://${gpgkey}",
       descr    => "OSG RPMs for SL ${::os_maj_version} - ${::architecture}",
       require  => Class['rpmrepos::epel']
     }
@@ -64,7 +65,7 @@ class rpmrepos::cms_osg (
       source => 'puppet:///modules/rpmrepos/RPM-GPG-KEY-OSG',
     }
 
-    rpmrepos::rpm_gpg_key { 'OSG': path => $gpgkey }
+    rpmrepos::rpm_gpg_key { 'OSG': path => "file://${gpgkey}" }
 
   } else {
     notice ("${::operatingsystem}: not compatible with OSG repo")

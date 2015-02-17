@@ -67,7 +67,7 @@ class rpmrepos::cms_puppet (
       source => 'puppet:///modules/rpmrepos/RPM-GPG-KEY-puppetlabs',
     }
 
-    rpmrepos::rpm_gpg_key { 'puppetlabs': path => $gpgkey }
+    rpmrepos::rpm_gpg_key { 'puppetlabs': path => "file://${gpgkey}" }
   } else {
     notice ("${::operatingsystem}: not compatible with puppet repo")
   }

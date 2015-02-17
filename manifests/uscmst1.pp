@@ -52,7 +52,7 @@ class rpmrepos::uscmst1 (
       source => 'puppet:///modules/rpmrepos/RPM-GPG-KEY-uscmst1'
     }
 
-    rpmrepos::rpm_gpg_key { 'uscmst1': path => $gpgkey }
+    rpmrepos::rpm_gpg_key { 'uscmst1': path => "file://${gpgkey}" }
   } else {
     notice ("${::operatingsystem}: not compatible with USCMS-T1 rpm repo")
   }
