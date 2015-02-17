@@ -65,7 +65,7 @@ class rpmrepos::cms_osg (
       source => 'puppet:///modules/rpmrepos/RPM-GPG-KEY-OSG',
     }
 
-    rpmrepos::rpm_gpg_key { 'OSG': path => "file://${gpgkey}" }
+    rpmrepos::rpm_gpg_key { 'OSG': path => $gpgkey }
 
   } else {
     notice ("${::operatingsystem}: not compatible with OSG repo")

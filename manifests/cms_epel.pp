@@ -60,9 +60,7 @@ class rpmrepos::cms_epel (
       source => "puppet:///modules/rpmrepos/RPM-GPG-KEY-EPEL-${::lsbmajdistrelease}",
     }
 
-    rpmrepos::rpm_gpg_key { "EPEL-${::lsbmajdistrelease}":
-      path => "file://${gpgkey}"
-    }
+    rpmrepos::rpm_gpg_key { "EPEL-${::lsbmajdistrelease}": path => $gpgkey }
   } else {
     notice ("${::operatingsystem}: not compatible with EPEL repo")
   }
