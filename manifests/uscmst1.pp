@@ -41,7 +41,7 @@ class rpmrepos::uscmst1 (
       enabled  => $enabled,
       gpgcheck => false,
       proxy    => $proxy,
-      url      => $baseurl,
+      url      => $url,
     }
 
     file { $gpgkey:
