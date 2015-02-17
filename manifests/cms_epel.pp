@@ -49,6 +49,7 @@ class rpmrepos::cms_epel (
       failovermethod => 'priority',
       gpgcheck       => '1',
       gpgkey         => "file://${gpgkey}",
+      priority       => $priority,
       proxy          => $proxy,
     }
 
