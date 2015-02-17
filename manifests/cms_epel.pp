@@ -44,12 +44,12 @@ class rpmrepos::cms_epel (
 
     yumrepo { 'epel':
       descr          => "Extra Packages for Enterprise Linux ${::os_maj_version} - ${::architecture}",
+      baseurl        => $url,
       enabled        => $enabled,
       failovermethod => 'priority',
       gpgcheck       => '1',
       gpgkey         => $gpgkey,
       proxy          => $proxy,
-      url            => $baseurl,
     }
 
     file { $gpgkey:
