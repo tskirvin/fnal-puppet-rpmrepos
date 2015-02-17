@@ -22,7 +22,7 @@
 #   class { 'rpmrepos::fef': }
 #
 class rpmrepos::fef (
-  $baseurl  = 'http://rexadmin1.fnal.gov/yum-managed/',
+  $baseurl  = 'http://rexadmin1.fnal.gov/yum-managed',
   $enabled  = true,
   $priority = '60',
   $proxy    = 'absent'
@@ -30,8 +30,8 @@ class rpmrepos::fef (
   validate_bool   ($enabled)
   validate_string ($baseurl, $proxy, $priority)
 
-  $url_noarch = "${baseurl}/RPMS/noarch/\$releasevar"
-  $url_arch   = "${baseurl}/RPMS/\$basearch/\$releasevar"
+  $url_noarch = "${baseurl}/RPMS/noarch/\$releasever/"
+  $url_arch   = "${baseurl}/RPMS/\$basearch/\$releasever/"
 
   if $::osfamily == 'RedHat' {
     yumrepo { 'fef-managed':
