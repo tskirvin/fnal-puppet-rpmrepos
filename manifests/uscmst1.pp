@@ -37,11 +37,11 @@ class rpmrepos::uscmst1 (
   $gpgkey = '/etc/pki/rpm-gpg/RPM-GPG-KEY-uscmst1'
   if $::osfamily == 'RedHat' {
     yumrepo { 'uscmst1':
+      baseurl  => $url,
       descr    => "USCMS-T1 RPMs for SL ${::os_maj_version} - ${::architecture}",
       enabled  => $enabled,
       gpgcheck => false,
       proxy    => $proxy,
-      url      => $url,
     }
 
     file { $gpgkey:

@@ -35,18 +35,18 @@ class rpmrepos::fef (
 
   if $::osfamily == 'RedHat' {
     yumrepo { 'fef-managed':
+      baseurl  => $url_arch,
       descr    => 'fef managed rpms',
       enabled  => $enabled,
       gpgcheck => false,
       proxy    => $proxy,
-      url      => $url_arch,
     }
     yumrepo { 'fef-managed-noarch':
+      baseurl  => $url_noarch,
       descr    => 'fef managed noarch rpms',
       enabled  => $enabled,
       gpgcheck => false,
       proxy    => $proxy,
-      url      => $url_noarch,
     }
   } else {
     notice ("${::operatingsystem}: not compatible with FEF rpm repos")
