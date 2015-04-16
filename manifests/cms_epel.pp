@@ -29,7 +29,7 @@
 class rpmrepos::cms_epel (
   $baseurl  = 'http://cms-install.fnal.gov/cobbler/repo_mirror',
   $enabled  = '1',
-  $itb      = false,
+  $itb      = hiera('repo_itb', 'false'),
   $priority = '90',
   $proxy    = 'absent'
 ) {
