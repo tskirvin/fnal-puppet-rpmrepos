@@ -33,6 +33,8 @@ class rpmrepos::cms_osg (
   $priority  = '80',
   $proxy     = 'absent',
 ) {
+  include rpmrepos::cms_epel
+
   validate_bool   ($itb)
   validate_string ($baseurl, $enabled, $proxy, $priority)
 
@@ -54,7 +56,7 @@ class rpmrepos::cms_osg (
       gpgcheck => '0',
       gpgkey   => "file://${gpgkey}",
       descr    => "OSG RPMs for SL ${::lsbmajdistrelease} - ${::architecture}",
-      require  => Class['rpmrepos::epel']
+      require  => Class['rpmrepos::cms_epel']
     }
 
     file { $gpgkey:
