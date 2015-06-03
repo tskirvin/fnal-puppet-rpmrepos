@@ -29,7 +29,7 @@
 class rpmrepos::cms_osg (
   $baseurl   = 'http://cms-install.fnal.gov/cobbler/repo_mirror',
   $enabled   = '1',
-  $itb       = hiera('repo_itb', 'false'),
+  $itb       = hiera('repo_itb', false),
   $priority  = '80',
   $proxy     = 'absent',
 ) {
